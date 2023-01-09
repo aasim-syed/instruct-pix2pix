@@ -88,13 +88,13 @@ The next step is to finetune a large language model on the manually written inst
 To prepare training data for GPT-3, one must first setup an OpenAI developer account to access the needed APIs. Also, run the `prompts/prepare_for_gpt.py` script, which forms the prompts into the correct format by concatenating instructions and captions and adding delimiters and stop sequences.
 
 ```bash
-python dataset_creation/prepare_for_gpt.py prompts/human_written_examples.jsonl prompts/human_written_examples_for_gpt.jsonl
+python dataset_creation/prepare_for_gpt.py data/human-written-prompts.jsonl data/human-written-prompts-for-gpt.jsonl
 ```
 
 Next, finetune GPT-3 via the OpenAI CLI. We provide an example below, although please refer to OpenAI's official documentation for this, as best practices may change. We trained the Davinci model for a single epoch. You can experiment with smaller less expensive GPT-3 variants or with open source language models, although this may negatively affect performance.
 
 ```bash
-openai api fine_tunes.create -t prompts/human_written_examples_for_gpt.jsonl -m davinci --n_epochs 1 --suffix "instruct-pix2pix"
+openai api fine_tunes.create -t data/human-written-prompts-for-gpt.jsonl -m davinci --n_epochs 1 --suffix "instruct-pix2pix"
 ```
 
 You can test out the finetuned GPT-3 model by launching the provided Gradio app:
