@@ -56,7 +56,9 @@ bash scripts/download_data.sh clip-filtered-dataset
 
 ## Training InstructPix2Pix
 
-Need to modify configs/instruct-pix2pix/default.yaml to point to the dataset in the right location. Need to also download the Stable Diffusion checkpoint from which to finetune.
+Need to modify configs/instruct-pix2pix/default.yaml to point to the dataset in the right location. Need to also download the Stable Diffusion checkpoint from which to finetune. 
+
+InstructPix2Pix is trained by fine-tuning from an initial StableDiffusion checkpoint. The first step is to download a Stable Diffusion checkpoint, (e.g., [checkpoint v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned.ckpt)), and point to it in the config file `configs/train.yaml`, in the line starting with `ckpt_path:`. 
 
 ```
 python stable_diffusion/main.py --name default --base configs/train.yaml --train --gpus 0,1,2,3,4,5,6,7
