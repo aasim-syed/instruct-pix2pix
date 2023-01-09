@@ -84,9 +84,9 @@ data:
     validation:
       target: edit_dataset.EditDataset
       params:
-        path: /shared/holynski/laion-aesthetics-6.5_edit-model=davinci-laion700-1epoch_samples=10000/laion-aesthetics-6.5_edit-model=davinci-laion700-1epoch_samples=10000
-        cache_dir:  /shared/timbrooks/image-edit-data/caches
-        cache_name: davinci10k
+        path: data/clip-filtered-dataset
+        cache_dir:  data/
+        cache_name: data_10k
         split: val
         min_text_sim: 0.2
         min_image_sim: 0.75
