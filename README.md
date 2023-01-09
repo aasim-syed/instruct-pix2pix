@@ -125,7 +125,7 @@ The next step is to turn pairs of text captions into pairs of images. For this, 
 bash scripts/download_pretrained_sd.sh
 ```
 
-For our model, we used [checkpoint v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned.ckpt), and the [new autoencoder](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt), but other models may work as well. If you choose to use other models, make sure to change point to the corresponding checkpoints by modifying lines 204-205 in `dataset_creation/generate_img_dataset.py`. Once all checkpoints have been downloaded, we can generate the dataset with the following command:
+For our model, we used [checkpoint v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned.ckpt), and the [new autoencoder](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt), but other models may work as well. If you choose to use other models, make sure to change point to the corresponding checkpoints by modifying lines 204-205 in `generate_img_dataset.py`. Once all checkpoints have been downloaded, we can generate the dataset with the following command:
 
 ```
 python dataset_creation/generate_img_dataset.py data/instruct-pix2pix-dataset-000 data/gpt_generated_prompts.jsonl
