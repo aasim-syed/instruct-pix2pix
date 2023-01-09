@@ -83,15 +83,15 @@ Input prompts should closely match the distribution of input prompts used to gen
 
 #### (1.2) Finetune GPT-3
 
-The next step is to finetune a large language model to generate an edit instruction and edited caption from a new input caption. We use GPT-3 Davinci via the OpenAI API, although other language models could be used.
+The next step is to finetune a large language model on the manually written instructions/outputs to generate edit instructions and edited caption from a new input caption. For this, we finetune GPT-3's Davinci model via the OpenAI API, although other language models could be used.
 
-To prepare training data for GPT-3, one must setup an OpenAI developer account to access the needed APIs. Run the `prompts/prepare_for_gpt.py` script, which forms the prompts into the correct format by concatenating instructions and captions and adding delimiters and stop sequences.
+To prepare training data for GPT-3, one must first setup an OpenAI developer account to access the needed APIs. Also, run the `prompts/prepare_for_gpt.py` script, which forms the prompts into the correct format by concatenating instructions and captions and adding delimiters and stop sequences.
 
 ```bash
 python dataset_creation/prepare_for_gpt.py prompts/human_written_examples.jsonl prompts/human_written_examples_for_gpt.jsonl
 ```
 
-Next, finetune GPT-3 via the OpenAI CLI. We provide an example below, although please refer to the official documentation here as best practices may change. We trained the Davinci model for a single epoch. You could experiment with smaller less expensive GPT-3 variants or with open source language models, although this may negatively hurt performance.
+Next, finetune GPT-3 via the OpenAI CLI. We provide an example below, although please refer to OpenAI's official documentation for this, as best practices may change. We trained the Davinci model for a single epoch. You can experiment with smaller less expensive GPT-3 variants or with open source language models, although this may negatively affect performance.
 
 ```bash
 openai api fine_tunes.create -t prompts/human_written_examples_for_gpt.jsonl -m davinci --n_epochs 1 --suffix "instruct-pix2pix"
