@@ -71,7 +71,7 @@ def main():
     parser.add_argument("--output", required=True, type=str)
     parser.add_argument("--edit", required=True, type=str)
     parser.add_argument("--cfg-text", default=7.5, type=float)
-    parser.add_argument("--cfg-image", default=1.2, type=float)
+    parser.add_argument("--cfg-image", default=1.5, type=float)
     parser.add_argument("--seed", type=int)
     args = parser.parse_args()
 
