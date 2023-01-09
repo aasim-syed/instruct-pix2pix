@@ -82,7 +82,7 @@ data:
     train:
       target: edit_dataset.EditDataset
       params:
-        path: /home/timbrooks/instruct-pix2pix-datasets/20-20-75
+        path: data/clip-filtered-dataset
         split: train
         min_resize_res: 256
         max_resize_res: 256
@@ -91,7 +91,7 @@ data:
     validation:
       target: edit_dataset.EditDataset
       params:
-        path: /home/timbrooks/instruct-pix2pix-datasets/20-20-75
+        path: data/clip-filtered-dataset
         split: val
         min_resize_res: 256
         max_resize_res: 256
