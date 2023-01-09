@@ -188,7 +188,7 @@ def main():
             return [seed, text_cfg_scale, image_cfg_scale, edited_image]
 
     def reset():
-        return [50, "Randomize Seed", random.randint(0, 100000), "Fix CFG", 7.5, 1.5, None]
+        return [0, "Randomize Seed", 1371, "Fix CFG", 7.5, 1.5, None]
 
     with gr.Blocks(css="footer {visibility: hidden}") as demo:
         with gr.Row():
@@ -208,7 +208,7 @@ def main():
             edited_image.style(height=512, width=512)
 
         with gr.Row():
-            steps = gr.Number(value=50, precision=0, label="Steps", interactive=True)
+            steps = gr.Number(value=100, precision=0, label="Steps", interactive=True)
             randomize_seed = gr.Radio(
                 ["Fix Seed", "Randomize Seed"],
                 value="Randomize Seed",
@@ -216,7 +216,7 @@ def main():
                 show_label=False,
                 interactive=True,
             )
-            seed = gr.Number(value=random.randint(0, 100000), precision=0, label="Seed", interactive=True)
+            seed = gr.Number(value=1371, precision=0, label="Seed", interactive=True)
             randomize_cfg = gr.Radio(
                 ["Fix CFG", "Randomize CFG"],
                 value="Fix CFG",
