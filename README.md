@@ -119,7 +119,13 @@ python dataset_creation/generate_txt_dataset.py OPENAI_MODEL_NAME --partitions=1
 
 ### (2) Turn paired captions into paired images
 
-The next step is to turn pairs of text captions into pairs of images. For this, we need to copy a pre-trained Stable Diffusion model checkpoint to `stable_diffusion/models/ldm/stable-diffusion-v1/`. For our model, we used [checkpoint v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned.ckpt), but other versions may also work. It is also necessary to download a checkpoint for the Stable Diffusion autoencoder. We used the [new autoencoder](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt), which should be put in the same directory. Once all checkpoints have been downloaded, we can generate the dataset with the following command:
+The next step is to turn pairs of text captions into pairs of images. For this, we need to copy pre-trained Stable Diffusion checkpoints to `stable_diffusion/models/ldm/stable-diffusion-v1/`. This can be done by running:
+
+```bash
+bash scripts/download_pretrained_sd.sh
+```
+
+For our model, we used [checkpoint v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned.ckpt), and the [new autoencoder](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt), but other models may work as well. If you choose to use other models, make sure to change point to the corresponding checkpoints by modifying lines 204-205 in `dataset_creation/generate_img_dataset.py`. Once all checkpoints have been downloaded, we can generate the dataset with the following command:
 
 ```
 python dataset_creation/generate_img_dataset.py data/instruct-pix2pix-dataset-000 data/gpt_generated_prompts.jsonl
