@@ -21,7 +21,7 @@ bash scripts/download_checkpoints.sh
 python edit_cli.py --input imgs/example.jpg --output imgs/output.jpg --edit "turn him into a cyborg"
 
 # Optionally, you can specify parameters:
-# python edit_cli.py --steps 100 --resolution 512 --seed 0 --cfg-text 7.5 --cfg-image 1.2 --input imgs/example.jpg --output imgs/output.jpg --edit "turn him into a cyborg"
+# python edit_cli.py --steps 100 --resolution 512 --seed 1371 --cfg-text 7.5 --cfg-image 1.5 --input imgs/example.jpg --output imgs/output.jpg --edit "turn him into a cyborg"
 ```
 
 ## Setup
