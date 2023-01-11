@@ -20,8 +20,8 @@ mkdir $SCRIPT_DIR/../data/$1
 wget -A zip,json -R "index.html*" -q --show-progress -r --no-parent http://instruct-pix2pix.eecs.berkeley.edu/$1/ -nd -P $SCRIPT_DIR/../data/$1/
 
 # Unzip to folders
-unzip $SCRIPT_DIR/../data/$1/*.zip -d $SCRIPT_DIR/../data/$1/
+unzip $SCRIPT_DIR/../data/$1/\*.zip -d $SCRIPT_DIR/../data/$1/
 
 # Cleanup
-#rm -f $SCRIPT_DIR/../data/$1/*.zip
-#rm -f $SCRIPT_DIR/../data/$1/*.html
+rm -f $SCRIPT_DIR/../data/$1/*.zip
+rm -f $SCRIPT_DIR/../data/$1/*.html
