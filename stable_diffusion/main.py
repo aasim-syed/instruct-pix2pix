@@ -737,6 +737,8 @@ if __name__ == "__main__":
             dst = os.path.join(dst, "debug_runs", name)
             os.makedirs(os.path.split(dst)[0], exist_ok=True)
             os.rename(logdir, dst)
-        if trainer is not None:
+        try:
             if trainer.global_rank == 0:
                 print(trainer.profiler.summary())
+        except:
+            pass
