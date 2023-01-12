@@ -63,7 +63,7 @@ bash scripts/download_pretrained_sd.sh
 ```
 If you'd like to use a different checkpoint, point to it in the config file `configs/train.yaml`, on line 8, after `ckpt_path:`. 
 
-Next, we need to change the config to point to our downloaded (or generated) dataset. If you're using the `clip-filtered-dataset` from above, you can skip this. Otherwise, you may need to edit lines 85 and 94 of the config (`data.params.train.params.path`, `data.params.validation.params.path`). 
+Next, we need to change the config to point to our downloaded (or generated) dataset. If you downloaded the `clip-filtered-dataset` from above, you can skip this. Otherwise, you may need to edit lines 85 and 94 of the config (`data.params.train.params.path`, `data.params.validation.params.path`) to point to your downloaded/generated dataset folder.
 
 Finally, start a training job with the following command:
 
