@@ -20,9 +20,10 @@ conda activate ip2p
 bash scripts/download_checkpoints.sh
 python edit_cli.py --input imgs/example.jpg --output imgs/output.jpg --edit "turn him into a cyborg"
 
-# Optionally, you can specify parameters:
-# python edit_cli.py --steps 100 --resolution 512 --seed 1371 --cfg-text 7.5 --cfg-image 1.5 --input imgs/example.jpg --output imgs/output.jpg --edit "turn him into a cyborg"
+# Optionally, you can specify parameters to tune your result:
+# python edit_cli.py --steps 100 --resolution 512 --seed 1371 --cfg-text 7.5 --cfg-image 1.2 --input imgs/example.jpg --output imgs/output.jpg --edit "turn him into a cyborg"
 ```
+For advice on how to get the best results by tuning parameters, see the [Tips](https://github.com/timothybrooks/instruct-pix2pix#tips) section. 
 
 ## Setup
 
@@ -148,6 +149,20 @@ After generating all of the dataset examples, run the following command below to
 ```
 python dataset_creation/prepare_dataset.py data/instruct-pix2pix-dataset-000
 ```
+
+## Tips
+
+If you're not getting the quality result you want, there may be a few reasons:
+1. **Is the image not changing enough?** Your Image CFG weight may be too high. This value dictates how similar the output should be to the input. It's possible your edit requires larger changes from the original image, and your Image CFG weight isn't allowing that. Alternatively, your Text CFG weight may be too low. This value dictates how much to listen to the text instruction. The default Image CFG of 1.5 and Text CFG of 7.5 are a good starting point, but aren't necessarily optimal for each edit. Try:
+    * Decreasing the Image CFG weight, or
+    * Incerasing the Text CFG weight, or
+2. Conversely, **is the image changing too much**, such that the details in the original image aren't preserved? Try:
+    * Increasing the Image CFG weight, or
+    * Decreasing the Text CFG weight
+3. Try generating results with different random seeds by setting "Randomize Seed" and running generation multiple times. You can also try setting "Randomize CFG" to sample new Text CFG and Image CFG values each time.
+4. Rephrasing the instruction sometimes improves results (e.g., "turn him into a dog" vs. "make him a dog" vs. "as a dog").
+5. Increasing the number of steps sometimes improves results.
+6. Do faces look weird? The Stable Diffusion autoencoder has a hard time with faces that are small in the image. Try cropping the image so the face takes up a larger portion of the frame.
 
 ## Comments
 
